@@ -14,7 +14,7 @@ void main() {
     });
 
     test('Reducing size Test', () async {
-      double? newSize = (await Downsizer.downsize(data: data))?.sizeKb;
+      double? newSize = (await Downsize.downsize(data: data))?.sizeKb;
       print('New size: ${newSize}kb');
       expect(data.sizeKb, greaterThanOrEqualTo(newSize!));
     });
