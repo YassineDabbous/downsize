@@ -1,11 +1,23 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:image/image.dart';
 
 /// helpful extensions for Uint8List.
-extension SzKb on Uint8List {
+extension Uint8ListDownsize on Uint8List {
   /// return data size in KB.
   double get sizeKb => (lengthInBytes / 1024).roundToDouble();
+
+  /// Decrease data size.
+  Future<Uint8List?> downsize({int minQuality = 60, double? maxSize}) =>
+      Downsize.downsize(data: this, minQuality: minQuality, maxSize: maxSize);
+}
+
+extension FileDownsize on File {
+  /// Decrease file size.
+  Future<Uint8List?> downsize({int minQuality = 60, double? maxSize}) =>
+      Downsize.downsize(
+          data: readAsBytesSync(), minQuality: minQuality, maxSize: maxSize);
 }
 
 /// Config class holds raw data with compression options.
