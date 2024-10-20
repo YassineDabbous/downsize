@@ -11,7 +11,7 @@ void main() async {
 
   print('Old size: ${data.sizeKb}kb');
 
-  data = await Downsizer.downsize(data: data);
+  data = await Downsize.downsize(data: data);
 
   print('New size: ${data?.sizeKb}kb');
 
