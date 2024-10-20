@@ -7,17 +7,17 @@
 | image |  <a href="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/test.png"><img src="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png" align="left" height="100" width="100"></a> | <a href="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png"><img src="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png" align="left" height="100" width="100"></a> |
 
 
-**Downsize** is a pure Dart package designed for image compression across multiple formats, including JPG, PNG, GIF, BMP, TIFF, TGA, PVR, and ICO. It efficiently reduces file sizes while maintaining quality and dynamically resizes large images, making it ideal for optimizing images in web or mobile applications.
+**Downsize** is a pure Dart package for image compression across multiple formats, such as JPG, PNG, GIF, BMP, TIFF, TGA, PVR, and ICO. It effectively reduces file sizes while maintaining image quality, featuring dynamic resizing and format-specific compression techniques. Whether you're optimizing images for web or mobile applications, Downsize is designed to be flexible and easy to use.
 
 This package is built on top of the **[image](https://pub.dev/packages/image)** Dart package, providing additional functionality for compression and resizing with an easy-to-use API.
 
 ## Features
 
 - Supports compression for a wide range of image formats: JPG, PNG, GIF, BMP, TIFF, TGA, PVR, ICO, and more.
-- Automatically resizes images based on predefined size thresholds.
+- Dynamically resizes images based on dimensions to prevent unnecessarily large files.
 - Customizable compression quality and target file size.
 - Specific compression techniques for different formats, such as reducing color depth for PNG files.
-- Fully integrates with Dart projects without requiring external dependencies beyond this package.
+- Built-in extensions for easy integration with Uint8List and File objects.
 
 ## Getting started
 
