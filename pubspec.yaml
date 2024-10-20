@@ -1,9 +1,9 @@
 name: downsize
 description: Pure dart image compression.
 version: 1.0.0
-repository: https://github.com/YassineDabbous/dart_downsize
-homepage: https://github.com/YassineDabbous/dart_downsize
-documentation: https://github.com/YassineDabbous/dart_downsize/blob/main/doc/README.md
+repository: https://github.com/YassineDabbous/downsize
+homepage: https://github.com/YassineDabbous/downsize
+documentation: https://github.com/YassineDabbous/downsize/blob/main/doc/README.md
 
 environment:
   sdk: ">=2.12.0"
