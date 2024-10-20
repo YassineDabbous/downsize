@@ -22,16 +22,14 @@ class Config {
   Config({required this.data, this.minQuality = 60, this.maxSize});
 }
 
-class Downsizer {
-  Downsizer._();
-
+class Downsize {
   static Future<Uint8List?> downsize({required Uint8List data, int minQuality = 60, double? maxSize}) async {
     if (data.isEmpty) return data;
-    return compress(Config(data: data, minQuality: minQuality, maxSize: maxSize));
+    return Downsize().compress(Config(data: data, minQuality: minQuality, maxSize: maxSize));
   }
 
   /// Decode and Compress image data.
-  static Uint8List? compress(Config config) {
+  Uint8List? compress(Config config) {
     Image? image = decodeImage(config.data);
     if (image == null) {
       throw Exception("Unsupported image type.");
@@ -66,7 +64,7 @@ class Downsizer {
   }
 
   /// Compress JPG image.
-  static Uint8List compressJpg({required Image image, required Config config, int quality = 90, bool preTreatment = true}) {
+  Uint8List compressJpg({required Image image, required Config config, int quality = 90, bool preTreatment = true}) {
     if (preTreatment) {
       image = dynamicResize(image);
       // print("resized to dimensions: ${image.width}/${image.height}");
@@ -82,7 +80,7 @@ class Downsizer {
   }
 
   /// Compress PNG image.
-  static Uint8List compressPng({required Image image, required Config config, int level = 9}) {
+  Uint8List compressPng({required Image image, required Config config, int level = 9}) {
     int width = image.width;
     int height = image.height;
 
@@ -101,7 +99,7 @@ class Downsizer {
   }
 
   /// Dynamically resize the image based on its dimensions.
-  static Image dynamicResize(Image image) {
+  Image dynamicResize(Image image) {
     bool byWidth = image.width > image.height;
     int originalSize = byWidth ? image.width : image.height;
     int size = originalSize;
