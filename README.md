@@ -1,5 +1,12 @@
 # Downsize
 
+ 
+|  | Origin | Compressed |
+|--|--|--|
+| size | 2.1 MB | 312 KB |
+| image |  <a href="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/test.png"><img src="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png" align="left" height="100" width="100"></a> | <a href="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png"><img src="https://raw.githubusercontent.com/YassineDabbous/downsize/refs/heads/main/example/compressed.png" align="left" height="100" width="100"></a> |
+
+
 **Downsize** is a pure Dart package designed for image compression across multiple formats, including JPG, PNG, GIF, BMP, TIFF, TGA, PVR, and ICO. It efficiently reduces file sizes while maintaining quality and dynamically resizes large images, making it ideal for optimizing images in web or mobile applications.
 
 This package is built on top of the **[image](https://pub.dev/packages/image)** Dart package, providing additional functionality for compression and resizing with an easy-to-use API.
@@ -43,15 +50,23 @@ import 'package:downsize/downsize.dart';
 
 void main() async {
   File imageFile = File('path/to/your/image.jpg'); // Replace with any supported format
+
+  // Using "downsize" extension on File class.
+  Uint8List? compressedData = await imageFile.downsize(data: imageData);
+
+  // OR
+  // Using "downsize" extension on Uint8List class.
   Uint8List imageData = await imageFile.readAsBytes();
+  Uint8List? compressedData = await imageData.downsize(data: imageData);
 
-  // Uint8List? compressedData = await Downsizer.downsize(data: imageData); // Compress with default options.
-
-  Uint8List? compressedData = await Downsizer.downsize(data: imageData, maxSize: 500, minQuality: 60); // Compress to 500 KB with 60% as minimum quality
+  // OR
+  // Using Downsize class
+  Uint8List imageData = await imageFile.readAsBytes();
+  Uint8List? compressedData = await Downsize.downsize(data: imageData, maxSize: 500, minQuality: 60); // Compress to 500 KB with 60% as minimum quality
   
+  // Save compressed image.
   if (compressedData != null) {
     await File('path/to/save/compressed_image.jpg').writeAsBytes(compressedData);
-    print('Image compressed and saved.');
   }
 }
 ```
