@@ -23,9 +23,17 @@ class Config {
 }
 
 class Downsize {
-  static Future<Uint8List?> downsize({required Uint8List data, int minQuality = 60, double? maxSize}) async {
+  static Future<Uint8List?> downsize({
+    required Uint8List data,
+    int minQuality = 60,
+    double? maxSize,
+  }) async {
     if (data.isEmpty) return data;
-    return Downsize().compress(Config(data: data, minQuality: minQuality, maxSize: maxSize));
+    return Downsize().compress(Config(
+      data: data,
+      minQuality: minQuality,
+      maxSize: maxSize,
+    ));
   }
 
   /// Decode and Compress image data.
@@ -64,23 +72,39 @@ class Downsize {
   }
 
   /// Compress JPG image.
-  Uint8List compressJpg({required Image image, required Config config, int quality = 90, bool preTreatment = true}) {
+  Uint8List compressJpg({
+    required Image image,
+    required Config config,
+    int quality = 90,
+    bool preTreatment = true,
+  }) {
     if (preTreatment) {
       image = dynamicResize(image);
       // print("resized to dimensions: ${image.width}/${image.height}");
     }
 
-    var im = encodeJpg(image, quality: quality);
-    if (config.maxSize != null && im.sizeKb > config.maxSize! && (quality - 10) >= config.minQuality) {
+    final im = encodeJpg(image, quality: quality);
+    if (config.maxSize != null &&
+        im.sizeKb > config.maxSize! &&
+        (quality - 10) >= config.minQuality) {
       // print('quality => ${quality - 10}');
-      return compressJpg(image: image, config: config, quality: quality - 10, preTreatment: false);
+      return compressJpg(
+        image: image,
+        config: config,
+        quality: quality - 10,
+        preTreatment: false,
+      );
     }
 
     return im;
   }
 
   /// Compress PNG image.
-  Uint8List compressPng({required Image image, required Config config, int level = 9}) {
+  Uint8List compressPng({
+    required Image image,
+    required Config config,
+    int level = 9,
+  }) {
     int width = image.width;
     int height = image.height;
 
@@ -88,7 +112,12 @@ class Downsize {
     // print("resized to dimensions: ${image.width}/${image.height}");
 
     // remove transparency
-    image = copyResize(image, backgroundColor: ColorRgb8(255, 255, 255), width: width, height: height);
+    image = copyResize(
+      image,
+      backgroundColor: ColorRgb8(255, 255, 255),
+      width: width,
+      height: height,
+    );
 
     // downsize the number of colors (to 8-bit)
     image = quantize(image, numberOfColors: 256);
@@ -114,6 +143,10 @@ class Downsize {
       return image;
     }
 
-    return copyResize(image, width: byWidth ? size : null, height: byWidth ? null : size);
+    return copyResize(
+      image,
+      width: byWidth ? size : null,
+      height: byWidth ? null : size,
+    );
   }
 }

@@ -6,7 +6,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Downsize Image', () {
-    Uint8List? data = File('${Directory.current.path}/example/test.png').readAsBytesSync();
+    Uint8List? data =
+        File('${Directory.current.path}/example/test.png').readAsBytesSync();
     print('Old size: ${data.sizeKb}kb');
 
     setUp(() {
