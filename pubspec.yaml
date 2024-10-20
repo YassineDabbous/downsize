@@ -6,10 +6,10 @@ homepage: https://github.com/YassineDabbous/downsize
 documentation: https://github.com/YassineDabbous/downsize/blob/main/doc/README.md
 
 environment:
-  sdk: ">=2.12.0"
+  sdk: ">=2.12.0 <4.0.0"
 
 dependencies:
-  image: 
+  image: ^4.3.0
 
 dev_dependencies:
   lints: ^3.0.0
