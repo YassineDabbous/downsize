@@ -1,6 +1,6 @@
 name: downsize
 description: Pure dart image compression across multiple formats, including JPG, PNG, GIF, BMP, TIFF, TGA, PVR, and ICO.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/YassineDabbous/downsize
 homepage: https://github.com/YassineDabbous/downsize
 documentation: https://github.com/YassineDabbous/downsize/blob/main/README.md
