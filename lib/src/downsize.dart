@@ -79,7 +79,9 @@ class Downsize {
     }
 
     final im = encodeJpg(image, quality: quality);
-    if (config.maxSize != null && im.sizeKb > config.maxSize! && (quality - 10) >= config.minQuality) {
+    if (config.maxSize != null &&
+        im.sizeKb > config.maxSize! &&
+        (quality - 10) >= config.minQuality) {
       // print('quality => ${quality - 10}');
       return compressJpg(
         image: image,

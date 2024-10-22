@@ -8,5 +8,9 @@ extension Uint8ListDownsize on Uint8List {
   double get sizeKb => (lengthInBytes / 1024).roundToDouble();
 
   /// Decrease data size.
-  Future<Uint8List?> downsize({int minQuality = 60, double? maxSize}) => Downsize.downsize(data: this, minQuality: minQuality, maxSize: maxSize);
+  Future<Uint8List?> downsize({
+    int minQuality = 60,
+    double? maxSize,
+  }) =>
+      Downsize.downsize(data: this, minQuality: minQuality, maxSize: maxSize);
 }
