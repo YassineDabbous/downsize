@@ -1,2 +1,2 @@
 export 'uint8list.dart';
-export 'file.dart';
+export 'none.dart' if (dart.library.io) 'file.dart';
